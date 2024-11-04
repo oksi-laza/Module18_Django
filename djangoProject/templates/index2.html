@@ -1,11 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}МОЙ ЗАГОЛОВОК{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href = '{% static "style.css" %}'>
 </head>
 <body>
-    <h1> Вторая страница</h1>
-    <p> Мы создаем второй шаблон</p>
+    <header>
+        {% block header %}
+        <h1> Вторая страница</h1>
+        {% endblock %}
+    </header>
+
+    <nav>
+        {% block navigation %}
+        <ul>
+            <li><a href="/">Перейти на главную</a></li>
+            <li><a href="/index">Первая созданная страница</a></li>
+            <li><a href="/index2">Вторая созданная страница</a></li>
+            <li><a href="/index3">Третья созданная страница</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+
+    <main>
+        {% block content %}
+        <p>Мы создаем второй шаблон</p>
+        <p>Этот файл-шаблон мы отдадим в наследство третьей созданной странице</p>
+        <p> Тут будут статьи</p>
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        {% block footer %}
+        <p>2024 My site</p>
+        <p>Этот блок отвечает за информацию в "подвале"</p>
+        {% endblock %}
+    </footer>
+
 </body>
 </html>

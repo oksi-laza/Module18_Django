@@ -9,7 +9,7 @@
     <h1>{{ title_h1 }}</h1>
     <h2>Не такой большой заголовок</h2>
     <h3>Заголовок третьего уровня, их всего шесть уровней</h3>
-    <p>Здесь абзац""</p>
+    <p>Здесь абзац</p>
     <p>{{ text }}</p>
     <br>
     <button>Я - кнопка!</button>
@@ -33,6 +33,17 @@
         <ol>Я в теге - немаркированный список</ol>
         <ol>Я в теге - немаркированный список</ol>
     </ul>
-
+    {% for elem in list_in_context %}
+        <p>{{ elem|upper }}</p>
+    {% endfor %}
+    <br>Далее идет пример с цифрами
+    {% for elem in list_number %}
+        <p>{{ elem|floatformat:3 }}</p>
+    {% endfor %}
+    {% if len_list_number > 4 %}
+        <h2>ОКЕЙ</h2>
+    {% else %}
+        <h2>НЕ ОКЕЙ</h2>
+    {% endif %}
 </body>
 </html>

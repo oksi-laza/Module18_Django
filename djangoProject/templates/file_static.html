@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}МОЙ ЗАГОЛОВОК{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href = '{% static "style.css" %}'>
+
+</head>
+<body>
+    <h1 class="h1">Главный заголовок</h1>
+    <p>Какой-то текст</p>
+    {% include 'file_testator.html' %}
+    <p>Выше строку я включила в наш файл-шаблон другой файл-шаблон</p>
+</body>
+</html>
