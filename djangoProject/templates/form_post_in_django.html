@@ -1,0 +1,22 @@
+{% extends 'form_post_in_html.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block title %}
+        <h3 align="center">Форма из Django</h3>
+    {% endblock %}
+
+    {% block form %}
+        <form method="post">
+            {{ form.as_table }}
+            {% csrf_token %}
+            <button type="submit">Отправить</button>
+        </form>
+    {% endblock %}
+
+</body>
+</html>

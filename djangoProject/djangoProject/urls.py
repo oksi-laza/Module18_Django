@@ -16,13 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from djangoapp.views import index, index2, file_static
+from djangoapp.views import index, index2, file_static, func_response, simple_post, example
+from djangoapp.views import form_post, form_post_django
 from django.views.generic import TemplateView    # при классовом представлении (класс 'index2') в путях к названию отображаемого класса применяем метод 'as_view'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index),
+    path('index/', index),
     path('index2/', index2.as_view()),
     path('index3/', TemplateView.as_view(template_name='index3.html')),
     path('', file_static),
+    path('func_response/', func_response),
+    path('simple_post/', simple_post),
+    path('example/', example),
+    path('form_post/', form_post),
+    path('form_post2/', form_post_django),
 ]
