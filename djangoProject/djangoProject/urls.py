@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoapp.views import index, index2, file_static, func_response, simple_post, example
-from djangoapp.views import form_post, form_post_django
+from djangoapp.views import form_post, form_post_django, data_from_model, test
+# from djangoapp.views import *    # можно доставать все функции из views, а не перечислять, как у меня выше
 from django.views.generic import TemplateView    # при классовом представлении (класс 'index2') в путях к названию отображаемого класса применяем метод 'as_view'
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +34,6 @@ urlpatterns = [
     path('example/', example),
     path('form_post/', form_post),
     path('form_post2/', form_post_django),
+    path('data_from_model/', data_from_model),
+    path('test/', test),
 ]

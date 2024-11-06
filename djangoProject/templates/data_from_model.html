@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% for author in Authors %}
+        <h1>{{ author.name|title }}</h1>
+        <p>{{ author.bio }}</p>
+    {% endfor %}
+    <a href="/test">Ссылка!</a>
+</body>
+</html>

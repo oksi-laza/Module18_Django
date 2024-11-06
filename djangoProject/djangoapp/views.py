@@ -2,6 +2,22 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView    # базовый шаблон, от которого наследуются классы представления
 from django.http import HttpResponse    # для возврата HTTP-ответа пользователю
 from .forms import ContactForm    # импортировали нужный класс для создания объекта формы. Если файл находится в той же директории приложения, то перед названием файла ставим точку.
+from .models import *    # импортировали все модели
+
+
+def data_from_model(request):
+    Authors = Author.objects.all()    # передали в переменную все объекты модели Author через QuerySet запрос
+    context = {
+        'Authors': Authors,
+    }
+    return render(request, 'data_from_model.html', context)
+
+
+def test(request):    # просто тестовая функция для отработки структуры MVT
+    context = {
+        'a': 15,
+    }    # в контекст можем передавать сразу значение, а не переменную (у нас значение 15 по ключу 'a')
+    return render(request, 'test.html', context)
 
 
 # Пояснение к функции ниже:
