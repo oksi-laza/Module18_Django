@@ -59,3 +59,34 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# Создали модели, которые будем использовать при администрировании сайта
+# Модель для категории  новостей
+class Category(models.Model):
+    name = models.CharField(max_length=250, verbose_name='Название категории')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+
+# Модель для новостей
+class News(models.Model):
+    title = models.CharField(max_length=250, verbose_name='Заголовок')
+    content = models.TextField(verbose_name='Содержание')
+    created_ad = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')    # нужно было created_at
+    updated_ad = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')    # нужно было updated_at
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
+        ordering = ['-created_ad']    # Сортировка по дате создания в обратном порядке
